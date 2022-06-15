@@ -8,7 +8,7 @@ import {
   createUserDocument,
 } from "../../utils/firebase/firebase.utils"
 
-import SignUp from "../../components/SignUp/SignUp"
+import SignUp from "../../components/SignUp"
 
 const SignIn = () => {
   useEffect(async () => {

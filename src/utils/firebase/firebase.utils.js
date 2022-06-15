@@ -28,8 +28,6 @@ provider.setCustomParameters({
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return
-
-  console.log(userAuth)
 }
 
 export const auth = getAuth()
@@ -37,7 +35,7 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider)
 export const db = getFirestore()
 
-export const createUserDocument = async (userAuth) => {
+export const createUserDocument = async (userAuth, additionalInformation = {}) => {
   if (!userAuth) return
   const userDocRef = doc(db, "user", userAuth.uid)
   const userSnapshot = await getDoc(userDocRef)
@@ -52,6 +50,7 @@ export const createUserDocument = async (userAuth) => {
         displayName,
         email,
         createAt,
+        ...additionalInformation
       })
     } catch (error) {
       console.log(error.message)
